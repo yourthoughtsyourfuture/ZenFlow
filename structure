@@ -1,0 +1,38 @@
+zenflow-app/
+├── components/
+│   ├── auth-buttons.tsx
+│   ├── content-browser.tsx
+│   ├── feedback-form.tsx
+│   ├── meditation-session.tsx
+│   ├── user-dashboard.tsx
+│   ├── zender-ai.tsx
+│   └── ui/
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── input.tsx
+│       ├── select.tsx
+│       ├── toast.tsx
+│       └── ...
+├── pages/
+│   ├── api/
+│   │   ├── auth/
+│   │   │   └── [...nextauth].ts
+│   │   ├── content.ts
+│   │   ├── recommendations.ts
+│   │   ├── submit-caq.ts
+│   │   ├── user-content-interaction.ts
+│   │   └── user-progress.ts
+│   ├── _app.tsx
+│   └── index.tsx
+├── prisma/
+│   └── schema.prisma
+├── public/
+│   └── ...
+├── styles/
+│   └── globals.css
+├── types/
+│   └── next-auth.d.ts
+├── .env.local
+├── next.config.js
+├── package.json
+└── tsconfig.json
