@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile   Profile?
+}
+
+model Profile {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  age                  Int
+  stressLevel          Int
+  meditationExperience String
+  meditationFrequency  String
+  primaryGoal          String
+  sleepQuality         String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  user                 User     @relation(fields: [userId], references: [id])
+}
+
+model Content {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  type        String
+  category    String
+  duration    Int
+  difficulty  String
+  tags        String[]
+  audioUrl    String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  UserContentInteraction UserContentInteraction[]
+}
+
+model UserContentInteraction {
+  id        String   @id @default(cuid())
+  userId    String
+  contentId String
+  rating    Float
+  feedback  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   Content  @relation(fields: [contentId], references: [id])
+
+  @@unique([userId, contentId])
+}
